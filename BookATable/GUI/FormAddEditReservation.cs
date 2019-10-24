@@ -106,7 +106,6 @@ namespace BookATable.GUI
                         + " hs. and " + ((Restaurant)this.cmbRestaurants.SelectedItem).CloseHour + " hs.", "Invalid reservation time",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             catch (FormatException)
             {

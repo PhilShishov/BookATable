@@ -27,11 +27,10 @@ namespace BookATable.GUI
                 textBoxEmail.Text = user.Email;
                 textBoxPhone.Text = user.Phone;
                 checkBoxIsAdmin.Checked = user.IsAdmin;
-
             }
+
             catch (Exception ex)
             {
-
                 throw new ApplicationException("Something wrong happened in the Add-Edit User Form :", ex);
             }
         }
