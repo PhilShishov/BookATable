@@ -9,7 +9,7 @@ Desktop application that implements a restaurant booking. The users can add/edit
 
 The project adheres to the so-called three-tier architecture. Database layer, Data access layer for our repositories, and GUI - Presentation layer.
 Data is stored on a relational database. Access to data is realized with Entity
-Frame and Repository pattern. The presentation layer is implemented with Windows
+Framework and Repository pattern. The presentation layer is implemented with Windows
 Forms.
 
 ## Installation
