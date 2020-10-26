@@ -1,6 +1,10 @@
 # Book A Table
 WindowsForms & Entity Framework
 
+ ## Technologies
+ * C# .NET, SQL Server, EF, LINQ
+ * Windows Messages, Winforms Controls, DataGridView, ComboBox, BindingSource 
+
 Desktop application that implements a restaurant booking. The users can add/edit other users, restaurants and reservations.
 
 The project adheres to the so-called three-tier architecture. Database layer, Data access layer for our repositories, and GUI - Presentation layer.
