@@ -36,6 +36,8 @@ The app needs also :
  
 <img src="https://image.ibb.co/mOVASp/bookatable.png">
 
+![Book a Table](https://image.ibb.co/mOVASp/bookatable.png)
+
 
 ## Using
 
