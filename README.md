@@ -33,8 +33,6 @@ The app needs also :
  
  - Enable-Migrations -EnableAutomaticMigrations
  - Update-Database
- 
-<img src="https://image.ibb.co/mOVASp/bookatable.png">
 
 ![Book a Table](https://image.ibb.co/mOVASp/bookatable.png)
 
