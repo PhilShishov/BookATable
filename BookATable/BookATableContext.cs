@@ -1,8 +1,8 @@
-﻿
-namespace BookATable
+﻿namespace BookATable
 {
     using System.Data.Entity;
-    using global::BookATable.Entities;
+
+    using Entities;
 
     public class BookATableContext : DbContext
     {

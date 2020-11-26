@@ -1,13 +1,16 @@
 ﻿namespace BookATable.GUI
 {
-    using global::BookATable.Entities;
-    using global::BookATable.Repositories;
     using System;
     using System.Windows.Forms;
+
+    using BookATable.Common;
+    using Entities;
+    using Repositories;
 
     public partial class FormReservation : Form
     {
         private ReservationRepository repository;
+        private const string ReservationDisplay = "Reservation";
 
         public FormReservation(ReservationRepository repository)
         {
@@ -50,9 +53,8 @@
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Reservation Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, ReservationDisplay), ex);
             }
-
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -85,7 +87,7 @@
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Reservation Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, ReservationDisplay), ex);
             }
 
         }
@@ -100,8 +102,11 @@
                     return;
                 }
 
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this item?",
-                    "Delete Confirmation ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    InfoMessages.DeleteConfirmation,
+                    GlobalConstants.DeleteConfirmationCaption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -113,7 +118,7 @@
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Reservation Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, ReservationDisplay), ex);
             }
         }
 

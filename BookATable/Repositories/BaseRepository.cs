@@ -1,12 +1,12 @@
-﻿
-namespace BookATable.Repositories
+﻿namespace BookATable.Repositories
 {
-    using global::BookATable.Entities;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Data.Entity;
     using System.Linq.Expressions;
+
+    using Entities;
 
     public class BaseRepository<T> where T : BaseEntity
     {

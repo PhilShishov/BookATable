@@ -1,12 +1,15 @@
-﻿
-namespace BookATable.GUI
+﻿namespace BookATable.GUI
 {
-    using global::BookATable.Repositories;
     using System;
     using System.Windows.Forms;
 
+    using BookATable.Common;
+    using Repositories;
+
     public partial class FormMain : Form
     {
+        private const string MainMenuFormMessageDisplay = "Main Menu Form";
+
         public FormMain()
         {
             InitializeComponent();
@@ -16,7 +19,7 @@ namespace BookATable.GUI
         {
             try
             {
-                FormUsers formUsers = new FormUsers(new UserRepository());
+                FormUser formUsers = new FormUser(new UserRepository());
                 formUsers.MdiParent = this;
                 formUsers.Show();
 
@@ -24,7 +27,7 @@ namespace BookATable.GUI
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Main Menu Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, MainMenuFormMessageDisplay), ex);
             }
 
         }
@@ -41,7 +44,7 @@ namespace BookATable.GUI
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Main Menu Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, MainMenuFormMessageDisplay), ex);
             }
         }
 
@@ -57,7 +60,7 @@ namespace BookATable.GUI
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Main Menu Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, MainMenuFormMessageDisplay), ex);
             }
         }
     }

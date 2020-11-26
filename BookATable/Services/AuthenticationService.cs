@@ -1,8 +1,7 @@
-﻿
-namespace BookATable.Services
+﻿namespace BookATable.Services
 {
-    using global::BookATable.Entities;
-    using global::BookATable.Repositories;
+    using Entities;
+    using Repositories;
 
     public class AuthenticationService
     {
@@ -10,8 +9,7 @@ namespace BookATable.Services
 
         public static User Authenticate(string email, string password)
         {
-            LoggedUser = new UserRepository().Get(u => u.Email == email
-                                                && u.Password == password);
+            LoggedUser = new UserRepository().Get(u => u.Email == email && u.Password == password);
             return LoggedUser;
         }
     }

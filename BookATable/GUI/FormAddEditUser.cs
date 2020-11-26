@@ -1,14 +1,17 @@
-﻿
-namespace BookATable.GUI
+﻿namespace BookATable.GUI
 {
-    using global::BookATable.Entities;
     using System;
     using System.Windows.Forms;
+
+    using BookATable.Common;
+    using Entities;
 
     public partial class FormAddEditUser : Form
     {
         private User user;
-        const int MIN_LENGTH = 8;
+        private const int MIN_LENGTH = 8;
+        private const string AddEditUserDisplay = "Add-Edit User";
+
         public FormAddEditUser(User user)
         {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace BookATable.GUI
 
             catch (Exception ex)
             {
-                throw new ApplicationException("Something wrong happened in the Add-Edit User Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, AddEditUserDisplay), ex);
             }
         }
 
@@ -49,20 +52,19 @@ namespace BookATable.GUI
                     string.IsNullOrEmpty(textBoxEmail.Text) || string.IsNullOrEmpty(textBoxPhone.Text))
                 {
                     this.DialogResult = DialogResult.Abort;
-                    MessageBox.Show("Please complete empty fields.");
+                    MessageBox.Show(ErrorMessages.EmptyInputFields);
                 }
 
                 if (textBoxPassword.TextLength < MIN_LENGTH)
                 {
                     this.DialogResult = DialogResult.Abort;
-                    MessageBox.Show("Password must be at least 8 characters.");
+                    MessageBox.Show(ErrorMessages.InvalidPassword);
                 }
-
             }
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Add-Edit User Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, AddEditUserDisplay), ex);
             }
         }
     }

@@ -1,12 +1,16 @@
 ﻿
 namespace BookATable.GUI
 {
-    using global::BookATable.Services;
     using System;
     using System.Windows.Forms;
 
+    using BookATable.Common;
+    using Services;
+
     public partial class FormLogin : Form
     {
+        private const string LoginFormMessageDisplay = "Login Form";
+
         public FormLogin()
         {
             InitializeComponent();
@@ -24,16 +28,17 @@ namespace BookATable.GUI
                 }
                 else
                 {
-                    MessageBox.Show("Wrong email or password",
-                                    "Login failure",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        ErrorMessages.InvalidLogin,
+                        GlobalConstants.LoginFailureCaption,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Login Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, LoginFormMessageDisplay), ex);
             }
 
         }

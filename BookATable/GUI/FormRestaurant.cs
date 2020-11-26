@@ -1,14 +1,16 @@
 ﻿namespace BookATable.GUI
 {
-    using global::BookATable.Entities;
-    using global::BookATable.Repositories;
     using System;
     using System.Windows.Forms;
 
+    using BookATable.Common;
+    using Entities;
+    using Repositories;
+
     public partial class FormRestaurant : Form
     {
-
         private RestaurantRepository repository;
+        private const string RestaurantDisplay = "Restaurant";
 
         public FormRestaurant(RestaurantRepository repository)
         {
@@ -52,7 +54,7 @@
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Restaurant Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, RestaurantDisplay), ex);
             }
 
         }
@@ -88,7 +90,7 @@
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Restaurant Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, RestaurantDisplay), ex);
             }
 
         }
@@ -103,8 +105,11 @@
                     return;
                 }
 
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this item?",
-                    "Delete Confirmation ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    InfoMessages.DeleteConfirmation,
+                    GlobalConstants.DeleteConfirmationCaption,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -116,7 +121,7 @@
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Restaurant Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, RestaurantDisplay), ex);
             }
         }
 

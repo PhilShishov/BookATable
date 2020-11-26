@@ -1,21 +1,24 @@
-﻿
-namespace BookATable.GUI
+﻿namespace BookATable.GUI
 {
-    using global::BookATable.Entities;
     using System;
     using System.Globalization;
     using System.Windows.Forms;
 
+    using BookATable.Common;
+    using Entities;
+
     public partial class FormAddEditRestaurant : Form
     {
         private Restaurant restaurant;
+        private const string AddEditRestaurantDisplay = "Add-Edit Restaurant";
+
         public FormAddEditRestaurant(Restaurant restaurant)
         {
             InitializeComponent();
             this.restaurant = restaurant;
         }
 
-        private void FormAddEditRestaurant_Load(object sender, System.EventArgs e)
+        private void FormAddEditRestaurant_Load(object sender, EventArgs e)
         {
             try
             {
@@ -35,12 +38,12 @@ namespace BookATable.GUI
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Add-Edit Restaurant Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, AddEditRestaurantDisplay), ex);
             }
 
         }
 
-        private void buttonSave_Click(object sender, System.EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -49,25 +52,25 @@ namespace BookATable.GUI
                 restaurant.Phone = textBoxPhone.Text;
 
                 restaurant.Capacity = (int)numUpDownCapacity.Value;
-                restaurant.OpenHour = dateTimePickerOpen.Value.ToString("HH:mm");
-                restaurant.CloseHour = dateTimePickerClose.Value.ToString("HH:mm");
+                restaurant.OpenHour = dateTimePickerOpen.Value.ToString(GlobalConstants.HourFormat);
+                restaurant.CloseHour = dateTimePickerClose.Value.ToString(GlobalConstants.HourFormat);
 
                 if (string.IsNullOrEmpty(textBoxRestaurantName.Text) || string.IsNullOrEmpty(textBoxAddress.Text) || string.IsNullOrEmpty(textBoxPhone.Text))
                 {
                     this.DialogResult = DialogResult.Abort;
-                    MessageBox.Show("Please complete empty fields.");
+                    MessageBox.Show(ErrorMessages.EmptyInputFields);
                 }
                 else if ((int)numUpDownCapacity.Value <= 0)
                 {
                     this.DialogResult = DialogResult.Abort;
-                    MessageBox.Show("Capacity must be greater than zero.");
+                    MessageBox.Show(ErrorMessages.InvalidCapacity);
                 }
 
             }
             catch (Exception ex)
             {
 
-                throw new ApplicationException("Something wrong happened in the Add-Edit Restaurant Form :", ex);
+                throw new ApplicationException(string.Format(ErrorMessages.ErrorMessageTemplate, AddEditRestaurantDisplay), ex);
             }
 
         }

@@ -1,6 +1,5 @@
 ﻿namespace BookATable.Entities
 {
-    using System;
     using System.ComponentModel;
 
     public class Reservation : BaseEntity

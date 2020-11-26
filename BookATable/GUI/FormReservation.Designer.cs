@@ -1,16 +1,21 @@
 ﻿namespace BookATable.GUI
 {
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+
     partial class FormReservation
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private BindingSource bindingSourceReserve;
+        private ToolStripButton AddButton;
+        private ToolStripButton EditButton;
+        private ToolStripButton DeleteButton;
+        private ToolStrip toolStrip1;
+        private DataGridView dataGridViewReserve;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,70 +27,66 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReservation));
-            this.bindingSourceReserve = new System.Windows.Forms.BindingSource(this.components);
-            this.AddButton = new System.Windows.Forms.ToolStripButton();
-            this.EditButton = new System.Windows.Forms.ToolStripButton();
-            this.DeleteButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.dataGridViewReserve = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceReserve)).BeginInit();
+            this.components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormReservation));
+            this.bindingSourceReserve = new BindingSource(this.components);
+            this.AddButton = new ToolStripButton();
+            this.EditButton = new ToolStripButton();
+            this.DeleteButton = new ToolStripButton();
+            this.toolStrip1 = new ToolStrip();
+            this.dataGridViewReserve = new DataGridView();
+            ((ISupportInitialize)(this.bindingSourceReserve)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReserve)).BeginInit();
+            ((ISupportInitialize)(this.dataGridViewReserve)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingSourceReserve
             // 
-            this.bindingSourceReserve.CurrentChanged += new System.EventHandler(this.bindingSourceReserve_CurrentChanged);
+            this.bindingSourceReserve.CurrentChanged += new EventHandler(this.bindingSourceReserve_CurrentChanged);
             // 
             // AddButton
             // 
-            this.AddButton.BackColor = System.Drawing.SystemColors.Control;
-            this.AddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
-            this.AddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddButton.BackColor = SystemColors.Control;
+            this.AddButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.AddButton.Image = ((Image)(resources.GetObject("AddButton.Image")));
+            this.AddButton.ImageTransparentColor = Color.Magenta;
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(33, 22);
+            this.AddButton.Size = new Size(33, 22);
             this.AddButton.Text = "Add";
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.AddButton.Click += new EventHandler(this.AddButton_Click);
             // 
             // EditButton
             // 
-            this.EditButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.EditButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.EditButton.Image = ((System.Drawing.Image)(resources.GetObject("EditButton.Image")));
-            this.EditButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.EditButton.ForeColor = SystemColors.ControlText;
+            this.EditButton.Image = ((Image)(resources.GetObject("EditButton.Image")));
+            this.EditButton.ImageTransparentColor = Color.Magenta;
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(31, 22);
+            this.EditButton.Size = new Size(31, 22);
             this.EditButton.Text = "Edit";
-            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            this.EditButton.Click += new EventHandler(this.EditButton_Click);
             // 
             // DeleteButton
             // 
-            this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
-            this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.DeleteButton.Image = ((Image)(resources.GetObject("DeleteButton.Image")));
+            this.DeleteButton.ImageTransparentColor = Color.Magenta;
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(44, 22);
+            this.DeleteButton.Size = new Size(44, 22);
             this.DeleteButton.Text = "Delete";
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.DeleteButton.Click += new EventHandler(this.DeleteButton_Click);
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStrip1.Items.AddRange(new ToolStripItem[] {
             this.AddButton,
             this.EditButton,
             this.DeleteButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(784, 25);
+            this.toolStrip1.Size = new Size(784, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -94,47 +95,40 @@
             this.dataGridViewReserve.AllowUserToAddRows = false;
             this.dataGridViewReserve.AllowUserToDeleteRows = false;
             this.dataGridViewReserve.AllowUserToOrderColumns = true;
-            this.dataGridViewReserve.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewReserve.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewReserve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewReserve.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewReserve.Location = new System.Drawing.Point(0, 28);
+            this.dataGridViewReserve.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
+            this.dataGridViewReserve.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewReserve.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReserve.EditMode = DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewReserve.Location = new Point(0, 28);
             this.dataGridViewReserve.MultiSelect = false;
             this.dataGridViewReserve.Name = "dataGridViewReserve";
             this.dataGridViewReserve.ReadOnly = true;
-            this.dataGridViewReserve.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewReserve.Size = new System.Drawing.Size(784, 333);
+            this.dataGridViewReserve.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewReserve.Size = new Size(784, 333);
             this.dataGridViewReserve.TabIndex = 1;
-            this.dataGridViewReserve.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReserve_CellDoubleClick);
+            this.dataGridViewReserve.CellDoubleClick += new DataGridViewCellEventHandler(this.dataGridViewReserve_CellDoubleClick);
             // 
             // FormReservation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(784, 361);
+            this.AutoScaleDimensions = new SizeF(6F, 13F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.BackColor = SystemColors.AppWorkspace;
+            this.ClientSize = new Size(784, 361);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridViewReserve);
             this.Name = "FormReservation";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormReservation";
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceReserve)).EndInit();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Manage Reservations";
+            ((ISupportInitialize)(this.bindingSourceReserve)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReserve)).EndInit();
+            ((ISupportInitialize)(this.dataGridViewReserve)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource bindingSourceReserve;
-        private System.Windows.Forms.ToolStripButton AddButton;
-        private System.Windows.Forms.ToolStripButton EditButton;
-        private System.Windows.Forms.ToolStripButton DeleteButton;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.DataGridView dataGridViewReserve;
     }
 }

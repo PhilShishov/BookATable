@@ -1,6 +1,6 @@
 ﻿namespace BookATable.Repositories
 {
-    using global::BookATable.Entities;
+    using Entities;
 
     public class ReservationRepository : BaseRepository<Reservation>
     {
